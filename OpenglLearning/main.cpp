@@ -1,16 +1,17 @@
-#include <SDL.h>
-#include <glm.hpp>
-#include <GL\glew.h>
-
-using namespace std;
+#include "Window.h"
 
 int main(int argc, char** argv)
 {
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window* window;
-	window = SDL_CreateWindow("Meow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
-
+	Window window("Learning", 600, 800);
+	Shader shader("E:\\VisualStudio2015\\C# projects\\OpenglLearning\\Shaders\\BasicShader");
+	while (!window.isClosed())
+	{
+		window.Clear(0.5f, 0.115f, 0.34f);
+		shader.Bind();
+		window.Draw();
+		window.Update();
+	}
 
 	system("PAUSE");
 	return 0;
